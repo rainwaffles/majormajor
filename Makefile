@@ -1,6 +1,6 @@
 #Version 2016.2.13
 
-all: mc
+all: mission
 
-mc:
-	g++ --std=c++11 -ggdb ./tasks.cpp ./missioncontrol.cpp -o missioncontrol
+mission:
+	g++ --std=c++11 -ggdb ./tasks.cpp ./mission.cpp -o mission
