@@ -1,6 +1,6 @@
 #include "tasks.hpp"
 
-Task::Task(int t, int p, float c, int t2, int dist) : task(t), points(p), certainty(c), time(t2)
+Task::Task(int t, int p, float c, int t2, int d) : task(t), points(p), certainty(c), time(t2), dist(d)
 {
 	calc(dist);
 }
@@ -11,14 +11,22 @@ Task::Task(FILE* confin)
 	fscanf(confin, "%i ", &points);
 	fscanf(confin, "%f ", &certainty);
 	fscanf(confin, "%i ", &time);
-	int dist;
 	fscanf(confin, "%i ", &dist);
 	calc(dist);
 }
 
-void Task::calc(int dist)
+void Task::calc(int d)
 {
-	value = points*certainty/time/dist;
+	dist = d;
+	value = points*certainty/(time+dist);
+}
+
+int Task::runtask()
+{
+	switch(task)
+	{
+	
+	}
 }
 
 Tasks::Tasks(FILE* confin)
@@ -46,7 +54,7 @@ int Tasks::best()
 	int bestT;
 	for(int i = 0; i < numtasks; i++)
 	{
-		if(tasklist[i].value > hval){bestT = tasklist[i].task;}
+		if(tasklist[i].value > hval){bestT = i;}
 	}
 	return bestT;
 }

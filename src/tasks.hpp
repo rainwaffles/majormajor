@@ -1,6 +1,15 @@
 #ifndef TASKS_H__
 #define TASKS_H__
 
+/*
+#include "gate.hpp"
+#include "buoys.hpp"
+#include "lgate.hpp"
+#include "bins.hpp"
+#include "torpedo.hpp"
+#include "pinger.hpp"
+*/
+
 #include <stdio.h>
 #include <vector>
 
@@ -13,20 +22,21 @@
 	5 = Pingers
 */
 
-//IDK what to name all these things
-
 struct Task
 {
 	Task(FILE* confin);
-	Task(int t, int p, float c, int t2, int dist);
+	Task(int t, int p, float c, int t2, int d);
 
 	int task;
 	int points;
 	float certainty;
 	int time;
-
+	int dist;
+	
 	float value;
-	void calc(int dist);
+	void calc(int d);
+	
+	int runtask();
 };
 
 struct Tasks
